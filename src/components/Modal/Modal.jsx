@@ -1,13 +1,13 @@
 import { Component } from 'react';
 
 export default class Modal extends Component {
-  componentDidMount() {
-    console.log('Modal componentDidMount');
-  }
+  //   componentDidMount() {
+  //     console.log('Modal componentDidMount');
+  //   }
 
-  componentWillUnmount() {
-    console.log('Modal componentWillUnmount');
-  }
+  //   componentWillUnmount() {
+  //     console.log('Modal componentWillUnmount');
+  //   }
   render() {
     return (
       <div
@@ -18,7 +18,7 @@ export default class Modal extends Component {
           left: '0',
           width: '100vw',
           height: '100vh',
-          backgroundColor: 'rgb(o,0,0,0.5)',
+          backgroundColor: 'rgba(0,0,0,0.5)',
         }}
       >
         <div
@@ -38,7 +38,8 @@ export default class Modal extends Component {
               '0px 2px 1px -1px rgba(0,0,0,0.2), opx 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12),',
           }}
         >
-          <img src="" alt="" />
+          {this.props.children}
+          {/* <img src="" alt="" /> */}
         </div>
       </div>
     );
