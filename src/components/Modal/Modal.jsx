@@ -11,7 +11,7 @@ export default class Modal extends Component {
   render() {
     return (
       <div
-        class="overlay"
+        className="overlay"
         style={{
           position: 'fixed',
           top: '0',
@@ -22,7 +22,7 @@ export default class Modal extends Component {
         }}
       >
         <div
-          class="modal"
+          className="modal"
           style={{
             position: 'absolute',
             top: '50%',
