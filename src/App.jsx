@@ -6,6 +6,8 @@ import { getImages } from 'api/getImages';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from 'components/ui/Loader/Loader';
+import { Header } from 'components/ui/Header';
+import { Container } from 'components/ui/Container';
 
 export class App extends Component {
   state = {
@@ -60,7 +62,12 @@ export class App extends Component {
     console.log(loading);
     return (
       <>
-        <SearchForm onSubmit={this.submitHandler} />
+        <Header>
+          <Container>
+            <SearchForm onSubmit={this.submitHandler} />
+          </Container>
+        </Header>
+
         {page === 1 && loading && <Loader />}
         {images.length > 0 && <ImageList data={this.state.images} />}
         {images.length !== 0 && images.length < total && (
