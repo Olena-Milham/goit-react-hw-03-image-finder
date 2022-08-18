@@ -1,10 +1,12 @@
+import axios from 'axios';
+import { BASE_URL, KEY } from 'constants/api';
 import { toast } from 'react-toastify';
-import { api } from './api';
 
 export const getImages = async (page, q) => {
   try {
-    const response = await api.get('', {
+    const response = await axios.get(BASE_URL, {
       params: {
+        key: KEY,
         page,
         q,
         image_type: 'photo',
@@ -13,7 +15,7 @@ export const getImages = async (page, q) => {
         per_page: '12',
       },
     });
-    return response;
+    return response.data;
   } catch (error) {
     toast.error(error);
   }

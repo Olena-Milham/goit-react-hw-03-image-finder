@@ -4,7 +4,7 @@ import { GoSearch } from 'react-icons/go';
 import * as yup from 'yup';
 
 const mySchema = yup.object().shape({
-  search: yup.string().required('Required'),
+  search: yup.string().required('This field is required'),
 });
 
 export class SearchForm extends Component {
@@ -15,14 +15,18 @@ export class SearchForm extends Component {
         validationSchema={mySchema}
         onSubmit={this.props.onSubmit}
       >
-        <Form>
-          <button type="submit">
-            <GoSearch />
-          </button>
+        {props => {
+          return (
+            <Form>
+              <button type="submit" disabled={props.isSubmitting}>
+                <GoSearch />
+              </button>
 
-          <Field name="search" />
-          <ErrorMessage name="search" />
-        </Form>
+              <Field name="search" />
+              <ErrorMessage name="search" />
+            </Form>
+          );
+        }}
       </Formik>
     );
   }

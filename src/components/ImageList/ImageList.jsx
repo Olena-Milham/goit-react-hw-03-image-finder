@@ -6,7 +6,7 @@ export class ImageList extends Component {
       <ul>
         {this.props.data.map(item => (
           <li
-            key={item.id}
+            key={item.webformatURL}
             onClick={() => this.props.setImage(item.largeImageURL)}
           >
             <img src={item.webformatURL} alt={item.tags} />
