@@ -3,10 +3,12 @@ import { Component } from 'react';
 import { GoSearch } from 'react-icons/go';
 import styled from 'styled-components';
 import * as yup from 'yup';
+import PropTypes from 'prop-types';
 
 const mySchema = yup.object().shape({
   search: yup.string().required('This field is required'),
 });
+
 const StyledForm = styled(Form)`
   width: 100%;
   max-width: 600px;
@@ -64,7 +66,13 @@ export class SearchForm extends Component {
                 <SearchButton type="submit" disabled={props.isSubmitting}>
                   <GoSearch />
                 </SearchButton>
-                <Input name="search" />
+                <Input
+                  name="search"
+                  type="text"
+                  autoComplete="off"
+                  autoFocus
+                  placeholder="Search images and photos"
+                />
               </InputWrapper>
               <ErrorMessage name="search" />
             </StyledForm>
@@ -74,3 +82,8 @@ export class SearchForm extends Component {
     );
   }
 }
+
+SearchForm.propTypes = {
+  name: PropTypes.string,
+  onSubmit: PropTypes.func.isRequired,
+};

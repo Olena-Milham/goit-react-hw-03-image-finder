@@ -34,7 +34,7 @@ export default class Modal extends Component {
   }
   // we create method to turn our anonimus function to be able to reuse it
   handleKeyDown = e => {
-    console.log(e.code);
+    // console.log(e.code);
     if (e.code === 'Escape') {
       console.log('call the right method');
       this.props.onClose();
@@ -43,7 +43,7 @@ export default class Modal extends Component {
 
   handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
-      console.log('backdrop click');
+      // console.log('backdrop click');
       this.props.onClose();
     }
   };

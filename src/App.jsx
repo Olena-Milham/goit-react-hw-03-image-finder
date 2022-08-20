@@ -8,6 +8,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from 'components/ui/Loader/Loader';
 import { Header } from 'components/ui/Header';
 import { Container } from 'components/ui/Container';
+import styled from 'styled-components';
+
+const AppContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+  padding-bottom: 24px;
+`;
 
 export class App extends Component {
   state = {
@@ -59,24 +67,26 @@ export class App extends Component {
 
   render() {
     const { images, total, loading, page } = this.state;
-    console.log(loading);
+    // console.log(loading);
     return (
       <>
-        <Header>
-          <Container>
-            <SearchForm onSubmit={this.submitHandler} />
-          </Container>
-        </Header>
+        <AppContainer>
+          <Header>
+            <Container>
+              <SearchForm onSubmit={this.submitHandler} />
+            </Container>
+          </Header>
 
-        {page === 1 && loading && <Loader />}
-        {images.length > 0 && <ImageList data={this.state.images} />}
-        {images.length !== 0 && images.length < total && (
-          <PrimaryButton onClick={this.onLoadMoreHandler} disabled={loading}>
-            {loading && page > 1 ? <Loader size="small" /> : 'Load more'}
-          </PrimaryButton>
-        )}
+          {page === 1 && loading && <Loader />}
+          {images.length > 0 && <ImageList data={this.state.images} />}
+          {images.length !== 0 && images.length < total && (
+            <PrimaryButton onClick={this.onLoadMoreHandler} disabled={loading}>
+              {loading && page > 1 ? <Loader size="small" /> : 'Load more'}
+            </PrimaryButton>
+          )}
 
-        <ToastContainer autoClose={3000} />
+          <ToastContainer autoClose={3000} />
+        </AppContainer>
       </>
     );
   }
